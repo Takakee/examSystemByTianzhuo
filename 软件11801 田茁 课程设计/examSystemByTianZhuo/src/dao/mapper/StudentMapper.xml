@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.IStudentDAO">
+	<select id="getByName" resultType="vo.Student">
+		select * from student where stuName = #{userName}
+	</select>
+	
+	<update id="update" parameterType="vo.Student">
+        UPDATE student SET score=#{score} where stuName=#{stuName}
+	</update>
+	
+	<select id="getHighest" resultType="vo.Student">
+		select * from student where score = (select MAX(score) from student)
+	</select>
+	
+	<select id="getLowest" resultType="vo.Student">
+		select * from student where score = (select MIN(score) from student)
+	</select>
+	
+	<select id="getAllStu" resultType="vo.Student">
+		select * from student
+	</select>
+	
+</mapper>

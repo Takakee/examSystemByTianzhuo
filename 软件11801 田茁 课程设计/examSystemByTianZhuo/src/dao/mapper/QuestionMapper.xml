@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.IQuestionDAO">
+	<select id="getById" resultType="vo.Question">
+		select * from question where id = #{userName}
+	</select>
+	
+	<insert id="insert" parameterType="vo.Question">
+		INSERT INTO question(id,content,answer) VALUES (#{id},#{content},#{answer}) 
+		ON DUPLICATE KEY UPDATE
+			content=#{content},answer=#{answer}
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM question where id=#{value}
+	</delete>
+	
+	<select id="getRandQuestion" resultType="vo.Question">
+		select * from question ORDER BY RAND() LIMIT #{userName}
+	</select>
+	
+	
+</mapper>

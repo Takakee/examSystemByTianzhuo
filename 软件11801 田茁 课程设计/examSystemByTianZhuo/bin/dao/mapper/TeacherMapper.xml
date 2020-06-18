@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.ITeacherDAO">
+	<select id="getByName" resultType="vo.Teacher">
+		select * from teacher where teacherName = #{userName}
+	</select>
+	
+	<update id="update" parameterType="vo.Teacher">
+        UPDATE teacher SET numberOfquestion=#{numberOfquestion} where teacherName=#{teacherName}
+	</update>
+	
+</mapper>
